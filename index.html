@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Do I Fit?</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="description" content="Demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/cupertino/jquery-ui.css" />
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+</head>
+
+<body>
+
+  <div id="dragCont">
+  <!-- PLACES -->
+    <div class="draggable">
+      <img class="resize" src="images/letters/t.svg">
+    </div>
+    <div class="draggable">
+        <img class="resize" src="images/letters/e.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/y.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/m.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/l.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/a.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/f.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/b.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/d.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/s.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/i.svg">
+    </div>
+    <div class="draggable">
+      <img class="resize" src="images/letters/r.svg">
+    </div>
+
+
+    <div class="draggable">
+      <img class="resize" src="images/letters/fbi_f.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/fbi_b.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/fbi_i.svg">
+    </div> 
+
+    <div class="draggable">
+      <img class="resize" src="images/letters/irs_i.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/irs_r.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/irs_s.svg">
+    </div> 
+
+
+
+    <div class="draggable">
+      <img class="resize" src="images/letters/nasa_n.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/nasa_a.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/nasa_s.svg">
+    </div> 
+    <div class="draggable">
+      <img class="resize" src="images/letters/nasa_a.svg">
+    </div> 
+
+    <div class="draggable">
+      <img class="resize" src="images/letters/us_seal.svg">
+    </div> 
+
+
+    <div class="draggable">
+      <div id="one">
+      <div class="ltop">
+          <video class="resize" id="webcam" autoplay></video>
+        </div>
+      </div>
+    </div> 
+
+
+  </div>
+
+    <div class="wrapper">
+    
+      <div class="container">
+        <p class="modal">Click here.</p>
+      </div>
+
+    </div>
+
+<!--     <div id="container">
+        <div id="one">
+            <div class="ltop">
+              <video id="webcam" class="video-bg" autoplay></video>
+            </div>
+            <div class="lbot">
+                <img class="video" src="images/paper.png">
+            </div>
+        </div>
+        <div id="two">
+          <img class="video" src="images/paper.png">
+        </div>
+    </div> -->
+
+
+    <script>
+
+
+      var video = document.getElementById('webcam');
+      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+       navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+       video.src = window.URL.createObjectURL(stream);
+       video.play();
+       });
+      }
+
+      var $cont = $('#container'),
+          contWidth = $cont.width(),
+          contHeight = $cont.height(),
+          $one = $('#one'),
+          $two = $('#two'),
+          $ltop = $one.find('.ltop'),
+          $lbot = $one.find('.lbot');
+
+      $ltop.resizable({
+          handles: 'se',
+          minWidth: '50px',
+          maxWidth: '100vw',
+          width: '50px',
+          height: '50px',
+
+          resize: function() {
+              var width = $(this).width(),
+                  height = $(this).height(),
+                  remSpaceH = contWidth - width,
+                  remSpaceV = contHeight - height;
+              
+              $one.width(width);
+              $two.width(remSpaceH - ($two.outerWidth() - $two.width()));
+              
+              $lbot.height(remSpaceV - ($lbot.outerHeight() - $lbot.height()));
+          }
+      });
+
+    </script>
+
+</body>
+
+</html>
