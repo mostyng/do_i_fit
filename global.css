@@ -115,8 +115,8 @@ p{
 	height: 50px;
 	bottom: 0;
 	box-sizing: border-box;
-	border-bottom: solid black 1px;
-
+/*	border-bottom: solid black 1px;
+*/
 }
 .modal{
 	cursor: pointer;
@@ -183,16 +183,15 @@ video{
 	height: 25px;
 	right: 0;
 	bottom: 0;
-}
+}*/
 
-.ui-resizable-handle {
-	border-color: 1px red;
+/*.ui-resizable-handle {
+	border-color: 1px blue;
 }*/
 
 .ui-icon {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     background-image: url(images/resize.png);
-    border: solid black 1px;
 }
 
